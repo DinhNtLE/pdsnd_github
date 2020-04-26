@@ -1,15 +1,12 @@
-### Date created
-Include the date you created this project and README file.
+Started and finished in Corona lockdown time. Kindly provide free month from Udacity.com
+Sunday 2020/04/26
 
-### Project Title
-Replace the Project Title
+# Python Script to Explore US Bikeshare Data
+
 
 ### Description
-Describe what your project is about and what it does
+Simple code using python explore a clean dataset kindly provided by Udacity
 
-### Files used
-Include the files used
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+Udacity team
