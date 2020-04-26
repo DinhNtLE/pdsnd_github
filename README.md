@@ -7,6 +7,7 @@ Started and finished in Corona lockdown time. Kindly provide a free month from U
 Simple python code explores a clean dataset kindly provided by Udacity.
 Updated on Sunday 2020/04/26
 ### dataset
+The datasets used for this script contain bike share data for the first six months of 2017. Some data wrangling has been performed by Udacity's staff.
 Data for Python code provided by <a href="https://www.motivateco.com/">Motivate</a>
 <a href="https://drive.google.com/drive/folders/13jJCbT1Fs5hlOBvhlznuCdzvdaLNA2cl?usp=sharing">Download here</a>
 
