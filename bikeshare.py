@@ -19,10 +19,10 @@ def input_data(in_dict):
         if input_data.lower() not in in_dict.keys():
             print('..')
             print('Given NUMBER only :) Please try again')
-    input_data = in_dict[input_data.lower()] 
+    input_data = in_dict[input_data.lower()]
     return input_data
-        
-    
+
+
 def get_city():
     '''Asks the user for a city and returns the filename for that city's bike share data.
     Args:
@@ -36,7 +36,7 @@ def get_city():
     city = input_data(in_dict)
     return city
 
-    
+
 def get_month():
     '''Asks the user for a month and returns the specified month.
     Args:
@@ -63,7 +63,7 @@ def get_day():
     this_month = get_month()[0]
     month = int(this_month[5:])
     valid_date = False
-    while valid_date == False:    
+    while valid_date == False:
         is_int = False
         day = input('\nWhich day? Please type your response as an integer.\n')
         while is_int == False:
@@ -93,7 +93,7 @@ def popular_month(df):
     index = int(df['start_time'].dt.month.mode())
     most_pop_month = months[index - 1]
     return most_pop_month
-    
+
 
 def popular_day(df):
     '''Finds and prints the most popular day of week (Monday, Tuesday, etc.) for start time.
@@ -125,7 +125,7 @@ def popular_hour(df):
     elif 13 <= most_pop_hour < 24:
         am_pm = 'pm'
         pop_hour_readable = most_pop_hour - 12
-        
+
     return pop_hour_readable, am_pm
 
 def trip_duration(df):
@@ -139,20 +139,20 @@ def trip_duration(df):
     total_duration = df['trip_duration'].sum()
     minute, second = divmod(total_duration, 60)
     hour, minute = divmod(minute, 60)
-     
-    
+
+
     average_duration = round(df['trip_duration'].mean())
     m, s = divmod(average_duration, 60)
     return hour, minute, m
-   
-    
+
+
 
 def popular_stations(df):
     '''Finds and prints the most popular start station and most popular end station.
     Args:
         bikeshare dataframe
     Returns:
-        none
+        pop_start, pop_end, 1
     '''
     pop_start = df['start_station'].mode().to_string(index = False)
     pop_end = df['end_station'].mode().to_string(index = False)
@@ -160,7 +160,7 @@ def popular_stations(df):
         return pop_start, 0
     else:
         return pop_start, pop_end, 1
-    
+
 def popular_trip(df):
     '''Finds and prints the most popular trip.
     Args:
@@ -194,20 +194,20 @@ def gender(df):
     return male_count, female_count
 
 def birth_years(df):
-    ''' Finds and prints the earliest (i.e. oldest user), most recent (i.e. 
+    ''' Finds and prints the earliest (i.e. oldest user), most recent (i.e.
         youngest user), and most popular birth years.
     Args:
         bikeshare dataframe
     Returns:
-        none
+        earliest, latest, mode
     '''
     earliest = int(df['birth_year'].min())
     latest = int(df['birth_year'].max())
     mode = int(df['birth_year'].mode())
     return earliest, latest, mode
 
-  
-    
+
+
 def random_data(df):
     '''Displays five lines of data if the user specifies that they would like to.
     After displaying five lines, ask the user if they would like to see five more,
@@ -235,8 +235,8 @@ def random_data(df):
             break
         elif random_input == 3:
             statistics()
-   
-          
+
+
 
 def get_filter(df):
     '''Asks the user for a time period and returns the specified filter.
@@ -268,8 +268,8 @@ def new_collumn(df):
         new_labels.append(col.replace(' ', '_').lower())
     df.columns = new_labels
     pd.set_option('max_colwidth', 100)
-    df['journey'] = df['start_station'].str.cat(df['end_station'], sep=' to ')  
-    
+    df['journey'] = df['start_station'].str.cat(df['end_station'], sep=' to ')
+
 
 def statistics():
     '''Calculates and prints out the descriptive statistics about a city and
@@ -286,14 +286,14 @@ def statistics():
     city = get_city()
     print('......................................')
     df = pd.read_csv(city_data[city], parse_dates = ['Start Time', 'End Time'])
-    
+
     new_collumn(df)
-    
+
     d1 = popular_month(df)
     print ('\n Significant of {} custumer used Bikeshare in {}. Do you interested more in'.format(city,d1))
     print('[1]a specific Month,\n[2]a specific day,\n[3]more detail, please. ')
     start_time = time.time()
-    
+
     d0 = get_filter(df)
     df_filtered = d0[0]
     d2=popular_day(df_filtered)
@@ -302,7 +302,7 @@ def statistics():
     d5=popular_stations(df_filtered)
     d6=popular_trip(df_filtered)
     d7=users(df_filtered)
-    
+
     print ('Data from {} to {}'.format(d0[1],d0[2]))
     print ('The service was busiest at {}{}. Bikeshare served {} hours and {} minutes with the average trip is {} minutes.{} seemed to be the most popular station, while custumer loved using Bikeshare to travel from{}'.format(d3[0],d3[1],d4[0],d4[1],d4[2],d5[0],d6))
     if city == 'Chicago' or city == 'New York city':
@@ -312,14 +312,13 @@ def statistics():
         print ('\nBikeshare had {} Subscribers and {} Customers during the given time, {} male and {} female with average age is {}. The oldest and youngest users are born in {} and {}, respectively'.format(d7[0],d7[1],d8[0],d8[1],d10,d9[0],d9[1]))
     if city == 'Washington':
         print('\nBikeshare had {} Subscribers and {} Customers during the given time. Unfortunately,no gender and birth year data available for {}'.format(d7[0],d7[1],city))
- 
+
     print("\nEnd Report!.\nThat took %s seconds." % (time.time() - start_time))
     print("")
-    
-    random_data(df_filtered) # Display five lines from data 
-   
+
+    random_data(df_filtered) # Display five lines from data
+
 
 
 if __name__ == "__main__":
 	statistics()
-    
