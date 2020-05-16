@@ -1,10 +1,9 @@
-Started and finished in Corona lockdown time. Kindly provide a free month from Udacity.com
-
+Kindly provide by Udacity.com. 
 # Python Script to Explore US Bikeshare Data
 
 
 ### Description
-Simple python code explores a clean dataset kindly provided by Udacity.
+Simple python code explores a clean dataset kindly provided by Udacity. From free a month access 
 Updated on Sunday 2020/04/26
 ### dataset
 The datasets used for this script contain bike share data for the first six months of 2017. Some data wrangling has been performed by Udacity's staff.
@@ -14,3 +13,4 @@ Data for Python code provided by <a href="https://www.motivateco.com/">Motivate<
 ### Credits
 Udacity team.
 motivateco team.
+
